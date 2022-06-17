@@ -10301,3 +10301,8 @@ textarea.form-control-lg {
   right: 20px;
   display: none;
 }
+
+.img-product {
+  width: 475px;
+  height: 440px;
+}

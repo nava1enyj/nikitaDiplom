@@ -46,6 +46,16 @@
                         </li>
                     @endif
                 @else
+
+                    <a class="navbar-brand" href="{{ route('cart') }}">
+                        <img src="{{ asset('img/cart.png') }}" alt="" width="32" height="32">
+                        (<span class="fs-6 cart-qty">
+                            {{\Cart::session($_COOKIE['cart_id'])->getTotalQuantity()}}
+                        </span>)
+                    </a>
+
+
+
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle active" href="#" role="button"
                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -55,6 +65,7 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                             <a class="dropdown-item" href="{{ route('cart') }}">{{ __('Корзина') }}</a>
+
                             @if (Auth::user()->isAdmin == 1)
 
                                 <a class="dropdown-item" href="{{ route('admin') }}">{{ __('Панель управления') }}</a>

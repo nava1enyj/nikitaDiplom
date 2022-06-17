@@ -22,8 +22,8 @@
 
                     </div>
 
-                    <div class="col-1 ms-5 me-4">Цена</div>
-                    <div class="col-1">Количество</div>
+                    <div class="col-1 ms-5 me-3">Цена</div>
+
                 </div>
             </div>
 
@@ -32,7 +32,7 @@
         <div class="d-flex justify-content-between flex-wrap align-items-center">
 
             @foreach($products as $product)
-
+                <input type="hidden" id="id" value="{{ $product['id'] }}">
                 <div class="col-12">
                     <div class="p-3">
                         <div class="card border border-success">
@@ -42,7 +42,7 @@
                                     <div class="fs-5">{{ $product['name'] }}</div>
                                     <div class="id">№{{ $product['id'] }}</div>
                                 </div>
-
+                                <hr>
 
                                 <div class="d-flex justify-content-between align-items-center">
 
@@ -58,23 +58,22 @@
                                     <div class="text-break ps-3 col-6 pe-3"> lorem75{{ $product['description'] }}</div>
                                     <div class="col-1">
 
-                                        <div class="fs-5 mt-3 me-3">{{ $product['price'] }} р.</div>
+                                        <div class="fs-5 mt-3 ms-2 me-3">{{ $product['price'] }} р.</div>
 
 
                                     </div>
                                     <div class="col-1 me-3">
 
-                                        <div class="form-floating mt-3 ">
-                                            <input type="number" class="form-control" name="price" id="floatingInput"
-                                                   placeholder="price">
-                                            <label for="floatingInput">Количество</label>
-                                        </div>
+
+
+                                        <a href="{{ route('one-product' , $product['id']) }}" class="btn btn-success mt-3 ms-3" id="addToCart">Подробнее</a>
 
                                     </div>
 
                                 </div>
 
-                                <a href="" class="btn btn-success mt-3 ms-3">Добавить в корзину</a>
+
+
 
                             </div>
                         </div>
@@ -89,6 +88,8 @@
     </div>
 
     @push('scripts')
+
         <script src="{{ asset('js/scrollToTop.js') }}" defer></script>
+
     @endpush
 @endsection

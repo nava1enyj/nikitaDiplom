@@ -30,4 +30,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/card', [\App\Http\Controllers\CartController::class , 'index'])->name('cart')->middleware('auth');
+Route::get('/cart', [\App\Http\Controllers\CartController::class , 'index'])->name('cart')->middleware('auth');
+
+Route::post('/addToCart' , [\App\Http\Controllers\CartController::class, 'addToCart'])->middleware('auth')->name('add-to-cart');
+
+Route::get('/removeAllCart' , [\App\Http\Controllers\CartController::class, 'removeAllCart'])->middleware('auth')->name('remove-all-cart');
+Route::get('/removeOneProduct/{id}' , [\App\Http\Controllers\CartController::class, 'removeOneProduct'])->middleware('auth')->name('remove-one-product');
+Route::get('/order', [\App\Http\Controllers\OrderController::class, 'index'])->middleware('auth')->name('order');
+Route::get('/product/{id}' , [\App\Http\Controllers\ProductController::class , 'index'])->middleware('auth')->name('one-product');
+
