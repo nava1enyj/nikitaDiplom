@@ -29,6 +29,21 @@
 
         </div>
 
+        @if($errors->any())
+            <div class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </div>
+        @endif
+        @if(session('success'))
+            <div class="alert alert-success">
+
+                <li>{{ session('success') }}</li>
+
+            </div>
+        @endif
+
         <div class="d-flex justify-content-between flex-wrap align-items-center">
 
             @foreach($products as $product)
@@ -55,7 +70,7 @@
 
                                     </div>
 
-                                    <div class="text-break ps-3 col-6 pe-3"> lorem75{{ $product['description'] }}</div>
+                                    <div class="text-break ps-3 col-6 pe-3">{{ $product['description'] }}</div>
                                     <div class="col-1">
 
                                         <div class="fs-5 mt-3 ms-2 me-3">{{ $product['price'] }} р.</div>
@@ -77,6 +92,13 @@
 
                             </div>
                         </div>
+                        @if(\Auth::user()->isAdmin == 1)
+
+                            <div class="mt-3">
+                                <a href="{{ route('del-product' , $product['id']) }}" class="link link-danger fs-5">Удалить товар</a>
+                            </div>
+                        @endif
+
                     </div>
 
 

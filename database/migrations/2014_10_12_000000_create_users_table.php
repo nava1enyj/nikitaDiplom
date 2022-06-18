@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->boolean('isAdmin')->default('0');
             $table->string('name');
             $table->string('lastname');
+
+            $table->string('phone');
             $table->string('patronymic');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

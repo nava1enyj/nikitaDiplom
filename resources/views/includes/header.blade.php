@@ -50,7 +50,11 @@
                     <a class="navbar-brand" href="{{ route('cart') }}">
                         <img src="{{ asset('img/cart.png') }}" alt="" width="32" height="32">
                         (<span class="fs-6 cart-qty">
+                            @if(isset($_COOKIE['cart_id']))
                             {{\Cart::session($_COOKIE['cart_id'])->getTotalQuantity()}}
+                            @else
+                                0
+                            @endif
                         </span>)
                     </a>
 
@@ -66,6 +70,7 @@
 
                             <a class="dropdown-item" href="{{ route('cart') }}">{{ __('Корзина') }}</a>
 
+                            <a class="dropdown-item" href="{{ route('orders-user') }}">{{ __('Заказы') }}</a>
                             @if (Auth::user()->isAdmin == 1)
 
                                 <a class="dropdown-item" href="{{ route('admin') }}">{{ __('Панель управления') }}</a>
